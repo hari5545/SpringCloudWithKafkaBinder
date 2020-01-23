@@ -38,7 +38,7 @@ public class OrderResources {
 	}
 
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	@SendTo(Processor.OUTPUT)
+	//@SendTo(Processor.OUTPUT)
 	public OrderDetails saveOrderItemsBy(@RequestBody ItemDetails itemDetails) {
 
 		ItemDetails item = new ItemDetails();

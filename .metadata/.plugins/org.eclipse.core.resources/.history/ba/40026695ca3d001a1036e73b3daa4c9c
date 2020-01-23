@@ -50,7 +50,7 @@ public class OrderResources {
 		List<ItemDetails> l = new LinkedList<>();
 		l.add(item);
 
-		//user.setId(userDetails.getId());
+		user.setId(userDetails.getId());
 		user.setFirstName(userDetails.getFirstName());
 		user.setMiddleName(userDetails.getMiddleName());
 		user.setLastName(userDetails.getLastName());
