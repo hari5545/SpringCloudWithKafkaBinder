@@ -1,0 +1,74 @@
+package com.example.model;
+
+public class OrderDetails {
+	private long id;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String address;
+	
+	private String orderType;
+	private String quantity;
+	
+	public OrderDetails() {
+		super();
+	}
+	public OrderDetails(long id, String firstName, String middleName, String lastName, String address, String orderType,
+			String quantity) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.address = address;
+		this.orderType = orderType;
+		this.quantity = quantity;
+	}
+	public String getOrderType() {
+		return orderType;
+	}
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
+	public String getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getMiddleName() {
+		return middleName;
+	}
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "OrderDetails [id=" + id + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName="
+				+ lastName + ", address=" + address + ", orderType=" + orderType + ", quantity=" + quantity + "]";
+	}
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+<fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+<fullyQualifiedTypeName name="javax.annotation.Resource"/>
+<fullyQualifiedTypeName name="com.example.demo.dto.User"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+<fullyQualifiedTypeName name="javax.xml.ws.BindingType"/>
+<fullyQualifiedTypeName name="org.springframework.kafka.annotation.KafkaListener"/>
+<fullyQualifiedTypeName name="org.springframework.http.MediaTypeEditor"/>
+<fullyQualifiedTypeName name="org.springframework.messaging.MessageHeaders"/>
+<fullyQualifiedTypeName name="com.orderItems.entity.UserDetailsEntity"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.stream.messaging.Sink"/>
+<fullyQualifiedTypeName name="com.example.dto.UserDetails"/>
+<fullyQualifiedTypeName name="com.example.dto.User"/>
+<fullyQualifiedTypeName name="com.example.dto.UserDto"/>
+<fullyQualifiedTypeName name="com.example.response.UserResponse"/>
+<fullyQualifiedTypeName name="com.example.demo.dto.UserDto"/>
+<fullyQualifiedTypeName name="com.example.demo.model.User"/>
+<fullyQualifiedTypeName name="com.example.demo.service.UserDetailsServic"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="com.example.model.ItemDetails"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+<fullyQualifiedTypeName name="com.example.service.OrderItemsService"/>
+<fullyQualifiedTypeName name="com.example.model.UserDetails"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.stream.annotation.EnableBinding"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.stream.annotation.StreamListener"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.stream.messaging.Processor"/>
+<fullyQualifiedTypeName name="com.example.model.OrderDetails"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+<fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.stream.messaging.Source"/>
+<fullyQualifiedTypeName name="org.springframework.messaging.MessageChannel"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="org.springframework.messaging.support.MessageBuilder"/>
+<fullyQualifiedTypeName name="org.springframework.messaging.handler.annotation.SendTo"/>
+</qualifiedTypeNameHistroy>

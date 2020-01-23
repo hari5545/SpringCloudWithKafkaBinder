@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+E:\MicroServices\SpringCloudStreamUsingKafkaBinder\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3141659331.index
+\Spring-Boot-Web\src\main\java
+E:\MicroServices\SpringCloudStreamUsingKafkaBinder\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4068595837.index
+\Spring-Boot-Web\src\main\java

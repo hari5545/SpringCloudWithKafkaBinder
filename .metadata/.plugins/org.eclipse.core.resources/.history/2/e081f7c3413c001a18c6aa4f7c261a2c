@@ -1,0 +1,29 @@
+package com.srit.boot.exception;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+@RestControllerAdvice
+public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
+
+	@ExceptionHandler(RecordNotFoundException.class)
+	public final ResponseEntity<Object> handleUserNotFoundException(RecordNotFoundException ex) {
+		List<String> details = new ArrayList<>();
+		details.add(ex.getLocalizedMessage());
+		ErrorResponse error = new ErrorResponse("Record Not Found", details);
+		return new ResponseEntity<Object>(error, HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler(EntityEmptyException.class)
+	public final ResponseEntity<Object> handleEntityEmptyException(EntityEmptyException ex) {
+		List<String> details = new ArrayList<>();
+		details.add(ex.getLocalizedMessage());
+		ErrorResponse error = new ErrorResponse("entity Empty", details);
+		return new ResponseEntity<Object>(error, HttpStatus.NO_CONTENT);
+	}
+}

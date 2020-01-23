@@ -1,0 +1,125 @@
+package com.orderItems.resources;
+
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Processor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.model.UserDetails;
+import com.orderItems.entity.Form;
+import com.orderItems.entity.ItemDetailsEntity;
+import com.orderItems.entity.OrderDetailsEntity;
+import com.orderItems.entity.UserDetailsEntity;
+import com.orderItems.service.OrderItemsService;
+
+@RestController
+@RequestMapping("/orderitem")
+public class OrderItemsResource {
+	UserDetailsEntity userEntity;
+	UserDetails user;
+	@StreamListener(Processor.INPUT)
+	public void consumeUser(UserDetails user) {
+		this.user=user;
+	}
+	@GetMapping(path ="/getUser",produces = MediaType.APPLICATION_JSON_VALUE)
+	public UserDetails getUser() {
+		return user;
+	}
+	@Autowired
+	OrderItemsService service;
+
+	Logger logger = Logger.getLogger(OrderItemsResource.class.getName());
+
+	@GetMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<OrderDetailsEntity> getOrderDetails(@RequestParam("id") int id) {
+		System.out.println("hello");
+		Optional<OrderDetailsEntity> responce = service.getORderDetails(id);
+		logger.log(Level.INFO, responce.toString());
+		return responce;
+
+	}
+
+	/*
+	 * @PostMapping(value="/save",produces =
+	 * MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+	 * public OrderDetailsEntity saveORderItems(@RequestBody OrderDetailsEntity
+	 * entity) { return service.save(entity); }
+	 */
+	/*
+	 * @PostMapping(value="/save",produces =
+	 * MediaType.APPLICATION_JSON_VALUE,consumes =
+	 * MediaType.MULTIPART_FORM_DATA_VALUE) public OrderDetailsEntity
+	 * saveORderItemsByForm(@RequestParam OrderDetailsEntity orderDetailsEntity) {
+	 * System.out.println(orderDetailsEntity);
+	 * orderDetailsEntity.setExpecteddate(new Date());
+	 * orderDetailsEntity.setOrderdate(new Date()); return
+	 * service.save(orderDetailsEntity); }
+	 */
+	@PostMapping(value = "/save", produces = MediaType.TEXT_PLAIN_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public String saveORderItemsBy(@ModelAttribute Form form) {
+		System.out.println(form);
+
+		ItemDetailsEntity item = new ItemDetailsEntity();
+		UserDetailsEntity user = new UserDetailsEntity();
+		OrderDetailsEntity orderdetail = new OrderDetailsEntity();
+
+		item.setItemName(form.getItemName());
+		item.setQty(form.getQty());
+		List<ItemDetailsEntity> l = new LinkedList<>();
+		l.add(item);
+
+		user.setFirst_name(form.getFirst_name());
+		user.setMiddle_name(form.getMiddle_name());
+		user.setLast_name(form.getLast_name());
+		user.setAddress(form.getAddress());
+
+		Date date = new Date();
+		date.setDate(date.getDate() + 5);
+
+		orderdetail.setExpecteddate(date);
+		orderdetail.setOrderdate(new Date());
+		orderdetail.setOrderedby(form.getOrderedby());
+		orderdetail.setItemdetails(l);
+		orderdetail.setUserDetailsEntity(user);
+
+		System.out.println(orderdetail);
+		service.save(orderdetail);
+		return "success";
+	}
+
+	@GetMapping(value = "/getuser/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<UserDetailsEntity> getuserdetails(@PathVariable("id") int id) {
+		return service.getUserDetailEntity(id);
+	}
+
+	@GetMapping(value = "/as")
+	protected OrderDetailsEntity saveOrderDetails() {
+		return null;
+
+	}
+
+	/*
+	 * @GetMapping(value = "/save/new",produces = MediaType.TEXT_PLAIN_VALUE) public
+	 * OrderDetailsEntity save() { ItemDetailsEntity item=new ItemDetailsEntity();
+	 * OrderDetailsEntity entity =new OrderDetailsEntity(); entity.setOrderdate(new
+	 * Date()); entity.setExpecteddate(new Date()); entity.setOrderedby("ram");
+	 * item.setItemId(100); item.setItemName("Book"); List lst=new
+	 * ArrayList<OrderDetailsEntity>(); lst.add(item); entity.setItemdetails(lst);
+	 * System.out.println(lst); return service.save(entity); }
+	 */
+
+}

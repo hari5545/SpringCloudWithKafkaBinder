@@ -1,0 +1,8 @@
+ #kafka  binder topic name 
+ 
+spring:
+  cloud:
+    stream:
+      bindings:        output:
+          destination: user-stream 
+        

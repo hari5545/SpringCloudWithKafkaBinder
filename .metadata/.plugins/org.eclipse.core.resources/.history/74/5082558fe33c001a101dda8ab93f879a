@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:  
+          destination: user-stream
+        output :
+          destination: user-stream
+  datasource :
+    url : jdbc:mysql://192.168.1.164:3306/kings
+    username : kings
+    password : kings@123
+  jpa :
+    show-sql : true

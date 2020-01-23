@@ -1,0 +1,46 @@
+package com.example;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Sink;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.dto.User;
+import com.example.dto.UserDetails;
+
+@SpringBootApplication
+@EnableBinding(Sink.class)
+@RestController
+@RequestMapping("/rest")
+public class KafkaBinderConsumerApplication {
+    User user;
+    UserDetails userDetails;
+	@StreamListener(Sink.INPUT)
+	public void consumeUserDetails(UserDetails userDetails) {
+		 this.userDetails=userDetails;
+	}
+	@StreamListener(Sink.INPUT)
+	public void consumeUser(User user) {
+		 this.user=user;
+	}
+	@GetMapping(path ="/getUseruserDetails",produces = MediaType.APPLICATION_JSON_VALUE)
+	public UserDetails getUserDetails() {
+		System.out.println(userDetails);
+		return userDetails;
+		
+	}
+	@GetMapping(path ="/getUser",produces = MediaType.APPLICATION_JSON_VALUE)
+	public User getUser() {
+		System.out.println(user);
+		return user;
+		
+	}
+	public static void main(String[] args) {
+		SpringApplication.run(KafkaBinderConsumerApplication.class, args);
+	}
+}
